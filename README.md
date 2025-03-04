@@ -53,5 +53,19 @@ To generate a new account, navigate to [provable.tools](https://provable.tools).
 leo run <function_name> <input_1> <input_2> ...
 ```
 See `./run.sh` for an example.
+Transitions Explained
+The contract defines three main transitions, each playing a critical role in the auction flow.
 
+1. place_bid
+This transition allows any participant to place a bid.
+
+transition place_bid(amount: u64) -> Bid 
+2. resolve
+This transition allows the auctioneer to compare two bids and return the higher one. This enforces fair auction logic.
+
+transition resolve(first: Bid, second: Bid) -> Bid
+3. finish
+This transition allows the auctioneer to declare a winning bid, marking it as the final winner.
+
+transition finish(bid: Bid) -> Bid
 
